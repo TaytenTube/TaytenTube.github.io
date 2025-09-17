@@ -56,11 +56,11 @@
     <header>
         <h1>TaytenTube</h1>
         <div class="search-bar">
-            <input type="text" placeholder="Search TaytenTube...">
+            <input type="text" id="search" placeholder="Search TaytenTube...">
         </div>
     </header>
     
-    <main class="video-grid">
+    <main class="video-grid" id="videoGrid">
         <div class="video">
             <video controls>
                 <source src="video1.mp4" type="video/mp4">
@@ -94,5 +94,22 @@
     <footer>
         <p>&copy; 2025 TaytenTube. All rights reserved.</p>
     </footer>
+
+    <script>
+        const searchInput = document.getElementById('search');
+        const videos = document.querySelectorAll('.video');
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+            videos.forEach(video => {
+                const title = video.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(query)) {
+                    video.style.display = 'block';
+                } else {
+                    video.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

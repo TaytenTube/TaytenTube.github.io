@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaytenTube</title>
+    <!-- Add the link to your favicon -->
+    <link rel="icon" href="Images/FaviconNew.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Comic Sans MS, sans-serif;
+            background-color: #ffcccc;
+            color: #333;
+            margin: 0;
+        }
+        header {
+            background: #ff0000;
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+            color: white;
+        }
+        .header-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .header-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        .search-bar input {
+            width: 60%;
+            padding: 5px;
+            font-size: 16px;
+        }
+        .search-bar button {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+        }
+	.tm {
+	    text-align: center;
+	    font-size: 24px;
+	    color: #333;
+	    font-weight: bold;
+	}
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+        .video {
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+        .video img {
+            width: 100%;
+            height: auto;
+            max-width: 270px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .creator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+        }
+        .creator img {
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+            margin-right: 8px;
+            border-radius: 50%;
+        }
+        footer {
+            text-align: center;
+            background: #ff0000;
+            color: white;
+            padding: 10px;
+            /* position: fixed; */
+            bottom: 0;
+            width: 100%;
+        }
+        #no-results {
+            text-align: center;
+            color: red;
+            display: none;
+        }
+        #about-section {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #000;
+            margin: 20px;
+            text-align: center;
+        }
+
+        /* Responsive design for different screen sizes */
+        @media (max-width: 768px) {
+            .video img {
+                max-width: 200px; /* Smaller size for tablets or small screens */
+            }
+            iframe {
+                width: 100%;
+                height: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video img {
+                max-width: 150px; /* Even smaller for mobile devices */
+            }
+            iframe {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        /* Featured Shorts section styles */
+        .featured-shorts {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            background-color: #ffcccc;
+            /* border: 1px solid #ccc; */
+        }
+        .featured-shorts iframe {
+            max-width: 100%;
+            height: 600px;
+        }
+        .featured-shorts h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+    <script>
+        function updateVideoVisibility() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const videos = document.querySelectorAll('.video');
+            let found = false;
+
+            videos.forEach((video) => {
+                const title = video.querySelector('p:first-of-type').textContent.toLowerCase();
+                const creator = video.querySelector('.creator p').textContent.toLowerCase();
+
+                // Check if the title or creator matches the search query
+                if ((query !== '' && (title.includes(query) || creator.includes(query)))) {
+                    video.style.display = 'block'; // Show the video
+                    found = true;
+                } else if (query === '') {
+                    video.style.display = 'block'; // Show all videos if the search is cleared
+                } else {
+                    video.style.display = 'none'; // Hide the video
+                }
+            });
+
+            // Display "No results" message if no videos match the search term
+            const noResultsMessage = document.getElementById('no-results');
+            if (!found && query !== '') {
+                noResultsMessage.style.display = 'block';
+            } else {
+                noResultsMessage.style.display = 'none';
+            }
+        }
+
+        function showAbout() {
+            const aboutSection = document.getElementById('about-section');
+            aboutSection.style.display = aboutSection.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        TaytenTube
+        <div class="header-links">
+            <a href="javascript:void(0);" onclick="showAbout()">About</a>
+        </div>
+    </header>
+    <div id="about-section">
+        <h2>How Tayten Founded TaytenTube</h2>
+        <p>So, picture this: Tayten was sitting on his couch, staring at a pile of potato chips, contemplating life. He thought, "What if there was a website where people could watch videos about... absolutely random stuff?!" Inspired by a single potato chip (which he ate immediately), he decided to create TaytenTube. And thus, a global phenomenon was born. Well, not really. But it's a start, right?</p>
+    </div>
+    <div class="search-bar">
+        <input id="search-input" type="text" placeholder="Search for videos..." oninput="updateVideoVisibility()">
+        <button onclick="updateVideoVisibility()">Search</button>
+    </div>
+    <div id="no-results">
+        No videos found for your search.
+    </div>
+    <div class="tm">
+    <p>This Week's Mix</p>
+    </div>
+    <div class="video-grid">
+        <div class="video">
+            <a href="https://www.youtube.com/watch?v=d-TjYEBuwYo" target="_blank">
+                <img src="https://i.ytimg.com/vi/d-TjYEBuwYo/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBv6WKXtTLTwhGZ7NZbJ2ARX0VKkA" alt="Video Thumbnail 1">
+            </a>
+            <p>You're on a game show</p>
+            <div class="creator">
+                <img src="https://yt3.ggpht.com/-YyTiomMmF5Kq3MbqbaZxycUD9_1H4qS4LD4wUlyb6S7E1NVEDESvGapkbx45U25N3-1czId=s88-c-k-c0x00ffffff-no-rj" alt="Mr Beast Profile" />
+                <p>Jaydaddy</p>
+            </div>
+        </div>
+        <div class="video">
+            <a href="https://www.youtube.com/watch?v=Cxqca4RQd_M" target="_blank">
+                <img src="https://i.ytimg.com/vi/Cxqca4RQd_M/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAx8De-EmFMRSNzwJmbTXAWENbPpw" alt="Video Thumbnail 2">
+            </a>
+            <p>If Google Was A Guy (Full Series)</p>
+            <div class="creator">
+                <img src="https://yt3.ggpht.com/PGpRF6Ml4ldis47-zxBMtW9rl-gN-YKDk0BSYhvt5jwXahDS4rn6J-g1M5u55YqGBUnY2MERyg=s88-c-k-c0x00ffffff-no-rj" alt="Dropout" />
+                <p>Droupout</p>
+            </div>
+        </div>
+        <div class="video">
+            <a href="https://www.youtube.com/watch?v=lOfZLb33uCg" target="_blank">
+                <img src="https://i.ytimg.com/vi/lOfZLb33uCg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBF-iirApvRfLfzKH94vr5DqnXg6w" alt="Video Thumbnail 1">
+            </a>
+            <p>"Weird" Al Yankovic - Amish Paradise (Parody of "Gangsta's Paradise" - Official Video)</p>
+            <div class="creator">
+                <img src="https://yt3.ggpht.com/ytc/AIdro_k3BmL4rKMAc80Rr2CQeRgxIqiqXWwKCS2aHxFiNWJZ9Kw=s88-c-k-c0x00ffffff-no-rj" alt="PSY Profile" />
+                <p>alyankovic</p>
+            </div>
+        </div>
+        <div class="video">
+            <a href="https://www.youtube.com/watch?v=Pd4LyXbqcf0" target="_blank">
+                <img src="https://i.ytimg.com/vi/Pd4LyXbqcf0/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAqnC4GUdVJHtnjObJ2p8K60GmYSA" alt="Video Thumbnail 4">
+            </a>
+            <p>Ranking Your DERANGED Presentations</p>
+            <div class="creator">
+                <img src="https://yt3.ggpht.com/Rr0aOvzRYLCyIDtIhIgkAYdQeagRlGDPzRuWoLrwGakM4VdnHPZHeSfUbiV-pJKmFbJ8LL9r5g=s88-c-k-c0x00ffffff-no-rj" alt="ProtoOfSnagem Profile" />
+                <p>jschlattLIVE</p>
+            </div>
+        </div>
+    </div>
+    <div class="featured-shorts">
+        <h2>Short of The Week</h2>
+	<iframe width="337" height="599" src="https://www.youtube.com/embed/l7utUc1M9I4" title="the sandwich problem" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <footer>
+        <p>TaytenTube © 2025 All Rights Reserved</p>
+    </footer>
+</body>
+</html>
