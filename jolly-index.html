@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JollyTube</title>
+    <link rel="icon" href="Images/FaviconNew.ico" type="image/x-icon">
+    <link rel="stylesheet" href="jolly-style.css">
+</head>
+<body>
+    <header>
+        <h1>JOLLY TUBE</h1>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="SEARCH VIDEOS...">
+        </div>
+    </header>
+    
+    <main class="video-grid" id="videoGrid">
+        <div class="video">
+            <video controls>
+                <source src="videos/Jolly25/video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h3>ERSTE BEGEGNUNG</h3>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 TAYTENTUBE. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('search');
+        const videos = document.querySelectorAll('.video');
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+            videos.forEach(video => {
+                const title = video.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(query)) {
+                    video.style.display = 'block';
+                } else {
+                    video.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

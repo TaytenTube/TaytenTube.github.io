@@ -1,22 +1,22 @@
 /* Load custom font */
 @font-face {
     font-family: "Spooked";
-    src: url("fonts/October Crow.ttf") format("truetype");
+    src: url("fonts/Santa's Air Mail.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 body {
     font-family: "Spooked", sans-serif;
-    background-color: #1a0b1e; /* dark purple background */
+    background-color: #3b0000;
     margin: 0;
     padding: 0;
-    color: #f3e5ab; /* pale yellowish text */
+    color: #098200;
 }
 
 header {
-    background-color: #4b0082; /* indigo purple */
-    color: #ff7518; /* pumpkin orange */
+    background-color: #820000;
+    color: #098200;
     text-align: center;
     padding: 20px;
 }
@@ -29,14 +29,14 @@ header {
     font-family: "Spooked", sans-serif;
     padding: 10px;
     width: 60%;
-    border: 2px solid #ff7518; /* orange border */
+    border: 2px solid #098200;
     border-radius: 5px;
-    background-color: #2c003e; /* deep purple input */
+    background-color: #043b00;
     color: #ffebcd; /* light beige text */
 }
 
 .search-bar input::placeholder {
-    color: #b57edc; /* lavender placeholder */
+    color: #098200;
 }
 
 .video-grid {
@@ -47,26 +47,26 @@ header {
 }
 
 .video {
-    background: #2a003f; /* eerie purple card */
-    border: 2px solid #ff7518; /* orange outline */
+    background: #043b00;
+    border: 2px solid #098200;
     border-radius: 10px;
     padding: 10px;
     text-align: center;
-    box-shadow: 0 0 15px rgba(255, 117, 24, 0.4); /* orange glow */
+    box-shadow: 0 0 15px rgba(9, 130, 0, 0.4);
 }
 
 .video video {
     width: 100%;
     border-radius: 10px;
-    border: 2px solid #8b008b; /* dark magenta border */
+    border: 2px solid #098200;
 }
 
 .video h3 {
-    color: #ff7518; /* pumpkin titles */
+    color: #098200;
 }
 
 .new-video {
-    background: #2a003f; /* eerie purple card */
+    background: #043b00;
     border: 2px solid #ff181b; /* red outline */
     border-radius: 10px;
     padding: 10px;
@@ -81,7 +81,7 @@ header {
 }
 
 .new-video h3 {
-    color: #ff181b; /* pumpkin titles */
+    color: #098200;
 }
 
 .new-text h5 {
@@ -92,7 +92,7 @@ header {
 }
 
 footer {
-    background-color: #4b0082; /* purple footer */
+    background-color: #820000; /* purple footer */
     color: #ffebcd; /* light beige text */
     text-align: center;
     padding: 15px;
